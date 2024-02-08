@@ -7,11 +7,11 @@ typedef struct node
     struct node *next;
 } node;
 
-int main(int argc, char *argv[])
+int main(int argc, const char *argv[])
 {
     node *list = NULL;
 
-    for (int i = 0; i < argc; i++)
+    for (int i = 1; i < argc; i++)
     {
         int number = atoi(argv[i]);
 
