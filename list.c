@@ -14,7 +14,6 @@ int main(int argc, const char *argv[])
     for (int i = 1; i < argc; i++)
     {
         int number = atoi(argv[i]);
-
         node *n = malloc(sizeof(node));
 
         if (n == NULL)
@@ -22,9 +21,28 @@ int main(int argc, const char *argv[])
             return 1;
         }
         n->number = number;
-        n->next = list;
+        n->next = NULL;
 
-        list = n;
+        if (list == NULL)
+        {
+            list = n;
+        }
+        else if (n->number < list->number)
+        {
+            n->next = list;
+            list = n;
+        }
+        else
+        {
+            for (node *ptr = list; ptr != NULL; ptr->next)
+            {
+                if (ptr->next == NULL)
+                {
+                    ptr->next = n;
+                    break;
+                }
+            }
+        }
     }
 
     node *ptr = list;
