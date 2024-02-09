@@ -41,6 +41,12 @@ int main(int argc, const char *argv[])
                     ptr->next = n;
                     break;
                 }
+                if (n->number < ptr->next->number)
+                {
+                    n->next = ptr->next;
+                    ptr->next = n;
+                    break;
+                }
             }
         }
     }
